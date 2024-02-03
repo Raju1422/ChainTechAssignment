@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% block title%} Home{% endblock title%}
+{% block content %}
+<h1>This home page</h1>
+<section>
+    {% if messages %}
+    {% for message in messages %}
+    <p{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        <div class="quote-container">
+            <h2 class="quote-header">Motivational Quotes</h2>
+            <p class="excersie">This Section is only Example of Excersie given in task</p>
+
+            <div class="quote-text">
+                {{quotes.quote}}
+            </div>
+            <span class="quote-said">- {{quotes.said_by}}</span>
+
+
+        </div>
+</section>
+{% endblock %}

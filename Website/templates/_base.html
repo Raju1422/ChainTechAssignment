@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%} Website {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">LOGO .</div>
+        <nav>
+            <ul class="nav-ul">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'user-list' %}">List of Users</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </nav>
+        <div class="btn">
+            <!-- <button type="button" class="btn-auth"> <a href="{% url 'home' %}">LOGIN</a></button>
+            <button type="button" class="btn-auth">SIGNUP</button> -->
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn-auth">LOGOUT</a>
+            <a href="{% url 'user-details' %}" class="btn-auth">User Details</a>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn-auth">LOGIN</a>
+            <a href="{% url 'signup' %}" class="btn-auth">SIGNUP</a>
+            {% endif %}
+
+
+        </div>
+    </header>
+    {% block content%}
+    {% endblock %}
+    <footer>
+        <h3 class="contact">Contact</h3>
+        <hr>
+        <div class="footer-container">
+            <ul class="footer-ul">
+                <div class="footer-li-container">
+                    <i class="fa-solid fa-location-dot myi"></i>
+                    <li>
+                        Find Me
+                        <br>
+                        <span>RGUKT IIIT NUZVID</span>
+                    </li>
+                </div>
+                <div class="footer-li-container">
+                    <li>
+                        <i class="fa-solid fa-phone myi"></i>
+                        Call Me
+                        <br>
+                        <span>+91 7981435916</span>
+                    </li>
+                </div>
+                <div class="footer-li-container">
+                    <li>
+                        <i class="fa-solid fa-envelope myi"></i>
+                        Mail me
+                        <br>
+                        <span>
+                            santoshramaraju.dev14@gmail.com
+                        </span>
+                    </li>
+                </div>
+            </ul>
+
+            <div class="social-media">
+                <h2> Follow us on </h2>
+                <a href="https://www.linkedin.com/in/nambala-santosh-ramaraju-560017250?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app "
+                    class="mymedia">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Raju1422" class="mymedia">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/dhe_cricket_lover/" class="mymedia">
+                    <i class="fa-brands fa-instagram "></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+{% block title%}LOGIN{% endblock title%}
+{% block content %}
+<section>
+
+    <h1>LOGIN</h1>
+    {% if messages %}
+    {% for message in messages %}
+    <p{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        <div class="container">
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <div>
+
+                    <input type="submit" value="Login" class="btn-auth" />
+                </div>
+                <a href="{% url 'signup' %}">Don't Have account ?? Click Here</a>
+            </form>
+        </div>
+</section>
+
+{% endblock %}
